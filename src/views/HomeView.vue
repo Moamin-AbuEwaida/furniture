@@ -63,6 +63,76 @@
           </v-col>
         </v-row>
       </v-card>
+      <v-toolbar color="transparent" class="mt-3">
+        <v-checkbox
+          v-model="chair"
+          label="Chairs"
+          class="check mt-4 black--text"
+          color="black"
+        ></v-checkbox>
+        <v-checkbox
+          v-model="other"
+          label="Othermass"
+          class="check mx-4 mt-4 black--text"
+          color="black "
+        ></v-checkbox>
+        <v-divider vertical class="mx-2"></v-divider>
+        <v-btn variant="text" class="ml-10"
+          >LEATHER COLORS
+          <v-icon right class="ml-2 mt-n1">fas fa-caret-right</v-icon>
+        </v-btn>
+        <v-divider vertical class="mx-2"></v-divider>
+        <v-btn variant="text" class="mx-10"
+          >Choose Design
+          <v-icon right class="ml-2 mt-n1">fas fa-caret-right</v-icon>
+        </v-btn>
+        <v-divider vertical class="mx-2"></v-divider>
+        <span class="text-caption mx-2">Price tile</span>
+        <v-slider v-model="sliders" class="mt-5"></v-slider>
+        <span class="text-caption mx-2">€9,432</span>
+      </v-toolbar>
+      <v-divider class="mt-2"></v-divider>
+      <v-toolbar color="transparent">
+        <v-toolbar-title>LOUNGE CHAIRS</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn variant="text" color="transparent" class="grey--text"
+          >sort by</v-btn
+        >
+        <v-btn variant="text" color="transparent" class="black--text"
+          >name</v-btn
+        >
+        <v-btn variant="text" color="transparent" class="grey--text"
+          >popularity</v-btn
+        >
+        <v-btn variant="text" color="transparent" class="grey--text"
+          >price</v-btn
+        >
+      </v-toolbar>
+      <v-row>
+        <v-col cols="12" sm="3" v-for="(chair, i) in chairs" :key="i">
+          <v-card height="300" align="center" flat tile>
+            <v-img :src="chair.image" width="200" height="200" contain></v-img>
+            <v-card-text class="mt-n1">
+              <strong>{{ chair.title }}</strong>
+            </v-card-text>
+            <v-card-text class="mt-n4">
+              <strong>{{ chair.price }}</strong>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-divider></v-divider>
+      <v-toolbar color="transparent">
+        <v-toolbar-title class="text-caption">show more chairs</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-icon color="grey" left class="mr-4 mt-n1"
+          >fas fa-long-arrow-alt-left</v-icon
+        >
+        <span class="text-caption">1</span>
+        <v-icon color="grey" left class="ml-4 mt-n1 mr-2"
+          >fas fa-long-arrow-alt-right</v-icon
+        >
+      </v-toolbar>
     </v-container>
   </v-app>
 </template>
@@ -80,8 +150,8 @@ export default {
       categories: [
         { img: "0.png", title: "SLEEPING BEDS" },
         { img: "2.png", title: "LOUNGE CHAIRS" },
-        { img: "1.png", title: "CHAIRS" },
-        { img: "4.png", title: "OFFICE CHAIRS" },
+        { img: "4.png", title: "CHAIRS" },
+        { img: "1.png", title: "OFFICE CHAIRS" },
         { img: "8.png", title: "TABLES NIGHTSTANDS" },
         { img: "6.png", title: "KITCHEN FURNITURE" },
       ],
@@ -205,4 +275,7 @@ export default {
 .v-card.borderout {
   border: 1px solid #d5f0db !important;
 }
+/* .black--text /deep/ label {
+  color: black;
+} */
 </style>
